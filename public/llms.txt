@@ -1,0 +1,55 @@
+# Architecture as Code Manifesto
+
+> Stop drawing architecture. Declare it. The manifesto of the Core Contributors of ArchitectureAsCode.Dev: software is written, tested and shipped as code, but the architecture that defines what that code may do is still just a drawing. Architecture as Code (AaC) means writing the architecture in a language, so it can be checked instead of looked at.
+
+The page is available in English (default) and Portuguese (pt-BR). Use `?lang=en` or `?lang=pt` to pick a language.
+
+## Core ideas
+
+- A diagram records an intention at one moment, then drifts. It is open to interpretation: one arrow between a service and a queue hides whether it is push or poll, sync or async, who retries and what happens on failure.
+- Architecture as Code (AaC) is the practice of writing the architecture in a language instead of drawing it: elements with a type, relationships with a meaning, rules that say what is allowed. It lives in the repository, is reviewed in a pull request and has a history.
+- Diagram as code is not Architecture as Code. A diagram made with code is still a diagram, meant to be looked at. An Architecture as Code is meant to be checked, before anyone builds it. The diagram stops being the source of truth and becomes one perspective of the reality, a view generated from the architecture.
+- Why now: generative AI sped up writing and shipping code, so the gap between the architecture on paper and the system in production grows faster. The reader of the architecture is no longer only a person. An agent needs well-defined entities and explicit relationships, contracts and dependencies, and policies a change must satisfy.
+- A specification gives an agent three things a diagram cannot: context to read, guardrails to respect and feedback to correct itself.
+
+## Diagram as code vs Architecture as Code
+
+| | Diagram as code | Architecture as Code |
+| --- | --- | --- |
+| Made for | Being looked at | Being checked |
+| What it holds | Boxes and arrows | Typed elements and relationships with a meaning |
+| Rules | A paragraph in a wiki | Policies that fail the build |
+| Reader | A person, who interprets it | People and agents, who can trust it |
+| When it is wrong | Nobody notices | It does not compile |
+
+## ASL
+
+ASL, the Architecture Specification Language, is the Core Contributors' attempt to make this real. Applications, databases, queues and their relationships are described in plain YAML manifests next to the code. A compiler checks the format of every element, the relationships and the consistency of the whole graph, then applies architectural policies from the organization's own enterprise context and enforces them on every run (for example: no shared database between services, nothing reaches the PCI scope except through the payments API, no synchronous call in a customer request without a timeout, every public API behind the gateway). It needs no model to run, costs no tokens and always gives the same answer. It runs in the terminal, in the editor, in a pull request and in a pipeline, so the architecture becomes a contract: a deploy can refuse to go ahead if it does not compile.
+
+## What we believe
+
+- Architecture is alive, not static, and must be governed by mechanisms that adapt to agentic coding.
+- Rules should be enforced before coding even starts, through architecture and system design guardrails in your agent harness.
+- Intent belongs where the code lives, written down, not left in a meeting or in someone's head.
+- Architecture is the input of the code, not the documentation that comes after it.
+
+We do not want to replace architects. We want their decisions to outlive the meeting. Declare it. Check it. Build on it.
+
+## Who should read this
+
+- Software architects who want their decisions to outlive the design review.
+- Tech leads who need the team and its agents to build what was agreed.
+- Engineering leaders (CTOs, heads of engineering and platform) who answer for consistency, risk and compliance across many teams.
+- Platform and governance teams who turn standards into checks instead of documents.
+- Developers and agent builders who want a specification they can read, not a picture to interpret.
+
+## Origin and authors
+
+The original manifesto is published at https://architectureascode.dev, signed by the Core Contributors of ArchitectureAsCode.Dev: Osvaldo Margato, João Araujo and Osnir Teixeira.
+
+## Links
+
+- Manifesto: https://architectureascode.dev
+- ASL documentation: https://asl.architectureascode.dev
+- GitHub organization: https://github.com/architectureascode
+- ASL compiler (Go): https://github.com/architectureascode/asl

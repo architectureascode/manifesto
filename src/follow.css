@@ -1,0 +1,45 @@
+/* "Follow on GitHub" pill, same as the ASL navbar's "Star on GitHub" */
+nav a.follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-3);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.65;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background-color 0.15s;
+}
+nav a.follow:hover {
+  border-color: #9ca3af;
+  background: var(--bg);
+  color: var(--strong);
+}
+@media (min-width: 1201px) {
+  nav a.follow {
+    margin-left: 0;
+  }
+}
+/* phones: icon only */
+@media (max-width: 640px) {
+  nav a.follow .follow-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  nav a.follow {
+    padding: 0.4rem 0.6rem;
+  }
+}

@@ -1,0 +1,29 @@
+/* contributors: compact name, tight to the photo */
+.signature ul li {
+  gap: 0.25rem;
+}
+.signature .signer-name {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.signature .avatar {
+  margin-bottom: 0.15rem;
+}
+.signature .socials {
+  gap: 0.5rem;
+}
+
+.signature {
+  text-align: center;
+}
+
+.signature .label a {
+  color: var(--accent);
+}
+.signature .label a:hover {
+  color: var(--strong);
+}
+
+.signature p.label {
+  margin-bottom: 1.75rem;
+}

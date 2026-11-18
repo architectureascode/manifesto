@@ -1,0 +1,467 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #fff;
+  --line: #e5e7eb;
+  --line-2: #d1d5db;
+  --strong: #0a0a0b;
+  --text-1: #1f1f23;
+  --text-2: #3f3f46;
+  --text-3: #52525b;
+  --muted: #6b6b73;
+  --accent: #001aff;
+  --link: #001aff;
+  --display: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
+  --body: 'Instrument Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-2);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+a {
+  color: var(--link);
+}
+a:hover {
+  color: var(--strong);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* navbar: same as the ASL site */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 4rem;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+nav .brandwrap {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+nav .brand img {
+  display: block;
+  height: 1.6rem;
+  width: auto;
+}
+nav .expansion {
+  margin-left: 0.3rem;
+  padding-left: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 1200px) {
+  nav .expansion {
+    display: none;
+  }
+}
+/* same as the ASL navbar: the label gets a full-height vertical divider */
+@media (min-width: 1201px) {
+  nav .expansion {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    margin: 0 1.5rem;
+    padding: 0 0 0 1.5rem;
+    border-left: 1px solid var(--line);
+  }
+}
+nav .links {
+  display: flex;
+  align-items: center;
+}
+nav .links a {
+  position: relative;
+  height: 4rem;
+  padding: 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+nav .links a:hover,
+nav .links a[aria-current] {
+  color: var(--strong);
+}
+nav .links a[aria-current]::after {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+nav .links a.asl {
+  gap: 0.3rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 0.5rem;
+  padding: 3px;
+  line-height: 1.65;
+  border: 1px solid #9ca3af;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+nav .links .lang button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+  height: auto;
+  padding: 3px 11px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--text-3);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+nav .links .lang button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+nav .links .lang button:hover {
+  background: #b8bec7;
+  color: var(--strong);
+}
+nav .links .lang button[aria-pressed='true'],
+nav .links .lang button[aria-pressed='true']:hover {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* article */
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem 5rem;
+}
+.kicker {
+  margin: 0 0 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+h1,
+h2 {
+  font-family: var(--display);
+  color: var(--strong);
+  font-weight: 600;
+}
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.7rem, 5.6vw, 4.9rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+h1 em,
+h2 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.lede {
+  margin: 0 0 3.5rem;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+h2 {
+  margin: 3.25rem 0 1rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+p {
+  margin: 0 0 1.25rem;
+}
+strong {
+  color: var(--strong);
+  font-weight: 600;
+}
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: var(--text-1);
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+}
+blockquote {
+  margin: 2rem 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--accent);
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--strong);
+}
+ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+li {
+  margin-bottom: 0.4rem;
+}
+li::marker {
+  color: var(--accent);
+}
+
+.signature {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-2);
+}
+.signature .label {
+  margin: 0 0 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.signature ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  color: var(--strong);
+}
+.signature li {
+  margin: 0 0 0.2rem;
+}
+.signature .date {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1.0625rem;
+  }
+  nav {
+    padding: 0 0.5rem 0 1rem;
+  }
+  nav .brand img {
+    height: 1.4rem;
+  }
+  nav .links a {
+    padding: 0 0.6rem;
+    font-size: 0.95rem;
+  }
+  nav .links a[aria-current]::after {
+    left: 0.6rem;
+    right: 0.6rem;
+  }
+  main {
+    padding-top: 3rem;
+  }
+}
+
+.signature ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem 3rem;
+}
+.signature li {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 10rem;
+  text-align: center;
+}
+.signature .socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.signature .profile {
+  display: inline-flex;
+  color: var(--muted);
+}
+.signature .profile:hover {
+  color: var(--accent);
+}
+
+.signature .avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--line);
+}
+
+/* hero: white sheet with a blueprint grid that fades out toward the bottom (same as the ASL home) */
+.hero {
+  position: relative;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line-2);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0V48' fill='none' stroke='%23001aff' stroke-opacity='.1'/%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(#000 30%, transparent 95%);
+  mask-image: linear-gradient(#000 30%, transparent 95%);
+}
+.hero-inner {
+  position: relative;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero h1 {
+  max-width: 15ch;
+  margin: 0 auto 1.5rem;
+  /* same as the ASL home h1: its Google Fonts link fails, so it renders in the system font at weight 600 */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif;
+  font-weight: 600;
+}
+.hero .lede {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: var(--text-2);
+}
+main {
+  padding-top: 3.5rem;
+}
+@media (max-width: 480px) {
+  .hero-inner {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.hero .lede {
+  text-wrap: pretty;
+}
+.hero .lede {
+  max-width: 58rem;
+}
+
+/* comparison table */
+.compare {
+  width: 100%;
+  margin: 0 0 1.5rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+.compare th,
+.compare td {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line-2);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.compare thead th {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--strong);
+}
+.compare thead td {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.compare tbody th {
+  width: 24%;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.compare td {
+  color: var(--text-3);
+}
+.compare .aac {
+  color: var(--strong);
+}
+.compare thead .aac {
+  color: var(--accent);
+}
+@media (max-width: 640px) {
+  .compare th,
+  .compare td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.86rem;
+  }
+  .compare thead th {
+    font-size: 0.9rem;
+  }
+  .compare tbody th {
+    width: 26%;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+}
